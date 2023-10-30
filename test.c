@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-#include <string.h>// memset | bzero | 
+#include <string.h>// memset | bzero | strcmp
 #include <stdio.h>// printf
 
 void	t_memset()
@@ -132,7 +132,6 @@ void	t_memmove()
 void	t_memchr()
 {
 	char ft_dest[] = "Start stop\0";
-	char diff[] = "artrt stop\0";
 
 	if (ft_memchr(ft_dest, 'o', 10) == ft_dest + 8)
 		printf("OK\n");
@@ -182,6 +181,152 @@ void	t_strlen()
 		printf("KO -> ft_strlen\n");
 }
 
+void	t_isalpha()
+{
+	if (ft_isalpha('z') == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isalpha\n");
+
+	if (ft_isalpha('4') == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isalpha\n");
+}
+
+void	t_isdigit()
+{
+	if (ft_isdigit('4') == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isdigit\n");
+
+	if (ft_isdigit('z') == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isdigit\n");
+}
+
+void	t_isalnum()
+{
+	if (ft_isalnum('4') == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isalnum\n");
+
+	if (ft_isalnum('z') == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isalnum\n");
+
+	if (ft_isalnum('.') == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isalnum\n");
+}
+
+void	t_isascii()
+{
+	if (ft_isascii(127) == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isascii\n");
+
+	if (ft_isascii(0) == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isascii\n");
+
+	if (ft_isascii(129) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isascii\n");
+}
+
+void	t_isprint()
+{
+	if (ft_isprint(126) == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isprint\n");
+
+	if (ft_isprint(32) == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isprint\n");
+
+	if (ft_isprint(129) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_isprint\n");
+}
+
+void	t_toupper()
+{
+	if (ft_toupper('a') == 'A')
+		printf("OK\n");
+	else
+		printf("KO -> ft_toupper\n");
+
+	if (ft_toupper('z') == 'Z')
+		printf("OK\n");
+	else
+		printf("KO -> ft_toupper\n");
+
+	if (ft_toupper(126) == 126)
+		printf("OK\n");
+	else
+		printf("KO -> ft_toupper\n");
+}
+
+void	t_tolower()
+{
+	if (ft_tolower('A') == 'a')
+		printf("OK\n");
+	else
+		printf("KO -> ft_tolower\n");
+
+	if (ft_tolower('Z') == 'z')
+		printf("OK\n");
+	else
+		printf("KO -> ft_tolower\n");
+
+	if (ft_tolower(126) == 126)
+		printf("OK\n");
+	else
+		printf("KO -> ft_tolower\n");
+}
+
+void	t_strchr()
+{
+	char ft_test[] = "La libft c'est un vrai p'tit plaisir.word\0";
+
+	if (strcmp(ft_strchr(ft_test, '.'), ".word") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strchr\n");
+
+	if (strcmp(ft_strchr(ft_test, '.'), ".wor") == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strchr\n");
+}
+
+void	t_strrchr()
+{
+	char ft_test[] = "La libft c'est un vrai p'tit plaisir.word\0";
+
+	if (strcmp(ft_strrchr(ft_test, 'i'), "ir.word") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strrchr\n");
+
+	if (strcmp(ft_strrchr(ft_test, 'i'), "ir.wor") == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strrchr\n");
+}
+
 int main()
 {
 	printf("\n====== Start test Libft ======\n");
@@ -200,5 +345,23 @@ int main()
 	t_memcmp();
 	printf("------------------------------\n");
 	t_strlen();
+	printf("------------------------------\n");
+	t_isalpha();
+	printf("------------------------------\n");
+	t_isdigit();
+	printf("------------------------------\n");
+	t_isalnum();
+	printf("------------------------------\n");
+	t_isascii();
+	printf("------------------------------\n");
+	t_isprint();
+	printf("------------------------------\n");
+	t_toupper();
+	printf("------------------------------\n");
+	t_tolower();
+	printf("------------------------------\n");
+	t_strchr();
+	printf("------------------------------\n");
+	t_strrchr();
 	printf("========== finished ==========\n");
 }
