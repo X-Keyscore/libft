@@ -15,6 +15,12 @@
 #include <string.h>// memset | bzero | strcmp
 #include <stdio.h>// printf
 
+/*
+- memset() -
+Elle remplit les n premiers octets de la zone mémoire pointée par s avec l'octet c.
+Elle renvoie un pointeur sur la zone mémoire s.
+*/
+
 void	t_memset()
 {
 	char ft_s[50] = "";
@@ -32,6 +38,11 @@ void	t_memset()
 	else
 		printf("KO -> ft_memset\n");
 }
+
+/*
+- bzero() -
+Elle met à 0 (octets contenant « \0 ») les n premiers octets du bloc pointé par s.
+*/
 
 void	t_bzero()
 {
@@ -70,6 +81,13 @@ void	t_bzero()
 		printf("KO -> ft_bzero\n");
 }
 
+/*
+- memcpy() -
+Elle copie n octets depuis la zone mémoire src vers la zone mémoire dest.
+Les deux zones ne doivent pas se chevaucher. Si c'est le cas, utilisez plutôt memmove(3).
+Elle renvoie un pointeur sur dest.
+*/
+
 void	t_memcpy()
 {
 	char ft_dest[] = "La libft c'est un vrai p'tit plaisir.word\0";
@@ -87,6 +105,12 @@ void	t_memcpy()
 	else
 		printf("KO -> ft_memcpy\n");
 }
+
+/*
+- memccpy() -
+elle copie au plus n octets de la zone mémoire src vers la zone mémoire dest, s'arrêtant dès qu'elle rencontre le caractère c.
+Elle renvoie un pointeur sur le caractère immédiatement après c dans la zone dest, ou NULL si c n'a pas été trouvé dans les n premiers caractères de src.
+*/
 
 void	t_memccpy()
 {
@@ -111,6 +135,14 @@ void	t_memccpy()
 		printf("KO -> ft_memccpy\n");
 }
 
+/*
+- memmove() -
+Elle copie n octets depuis la zone mémoire src vers la zone mémoire dest.
+Les deux zones peuvent se chevaucher : la copie se passe comme si les octets de src étaient d'abord copiés dans une zone temporaire qui ne chevauche ni src ni dest,
+et les octets sont ensuite copiés de la zone temporaire vers dest.
+Elle renvoie un pointeur sur dest.  
+*/
+
 void	t_memmove()
 {
 	//char ft_dest[90] = "La libft c'est un vrai p'tit plaisir, comme un bon gateau.";
@@ -129,6 +161,13 @@ void	t_memmove()
 		printf("KO -> ft_memmove\n");
 }
 
+/*
+- memchr() -
+Elle examine les n premiers octets de la zone mémoire pointée par s à la recherche du caractère c.
+Le premier octet correspondant à c (interprété comme un unsigned char) arrête l'opération.
+Elle renvoie un pointeur sur l'octet correspondant, ou NULL si le caractère n'est pas présent dans la zone de mémoire concernée.
+*/
+
 void	t_memchr()
 {
 	char ft_dest[] = "Start stop\0";
@@ -143,6 +182,12 @@ void	t_memchr()
 	else
 		printf("KO -> ft_memchr\n");
 }
+
+/*
+- _memcmp() -
+Elle compare les n premiers octets des zones mémoire s1 et s2.
+Elle renvoie un entier inférieur, égal, ou supérieur à zéro, si s1 est respectivement inférieure, égale ou supérieur à s2.
+*/
 
 void	t_memcmp()
 {
@@ -163,8 +208,12 @@ void	t_memcmp()
 		printf("OK\n");
 	else
 		printf("KO -> ft_memcmp\n");
-
 }
+
+/*
+- strlen() -
+La len du mouton.
+*/
 
 void	t_strlen()
 {
@@ -181,6 +230,12 @@ void	t_strlen()
 		printf("KO -> ft_strlen\n");
 }
 
+/*
+- isalpha() -
+vérifie un caractère alphabétique.
+Les valeurs renvoyées sont différentes de zéro si le caractère c appartient à la classe testée, et une valeur nulle sinon.
+*/
+
 void	t_isalpha()
 {
 	if (ft_isalpha('z') == 1)
@@ -194,6 +249,12 @@ void	t_isalpha()
 		printf("KO -> ft_isalpha\n");
 }
 
+/*
+- isdigit() -
+Recherche un chiffre.
+Les valeurs renvoyées sont différentes de zéro si le caractère c appartient à la classe testée, et une valeur nulle sinon.
+*/
+
 void	t_isdigit()
 {
 	if (ft_isdigit('4') == 1)
@@ -206,6 +267,12 @@ void	t_isdigit()
 	else
 		printf("KO -> ft_isdigit\n");
 }
+
+/*
+- isalnum() -
+Recherche un caractère alphanumérique.
+Les valeurs renvoyées sont différentes de zéro si le caractère c appartient à la classe testée, et une valeur nulle sinon.
+*/
 
 void	t_isalnum()
 {
@@ -225,6 +292,12 @@ void	t_isalnum()
 		printf("KO -> ft_isalnum\n");
 }
 
+/*
+- isascii() -
+Vérifie si c est une valeur de caractère non signée de 7 bits qui correspond au jeu de caractères ASCII.
+Les valeurs renvoyées sont différentes de zéro si le caractère c appartient à la classe testée, et une valeur nulle sinon.
+*/
+
 void	t_isascii()
 {
 	if (ft_isascii(127) == 1)
@@ -242,6 +315,12 @@ void	t_isascii()
 	else
 		printf("KO -> ft_isascii\n");
 }
+
+/*
+- isprint() -
+vérifie tout caractère imprimable, y compris l'espace.
+Les valeurs renvoyées sont différentes de zéro si le caractère c appartient à la classe testée, et une valeur nulle sinon.
+*/
 
 void	t_isprint()
 {
@@ -261,6 +340,12 @@ void	t_isprint()
 		printf("KO -> ft_isprint\n");
 }
 
+/*
+- toupper() -
+Convertit la lettre c en majuscule, si possible.
+La valeur renvoyée est celle de la lettre convertie, ou c si la conversion n'a pas été possible.
+*/
+
 void	t_toupper()
 {
 	if (ft_toupper('a') == 'A')
@@ -278,6 +363,12 @@ void	t_toupper()
 	else
 		printf("KO -> ft_toupper\n");
 }
+
+/*
+- tolower() -
+Convertit la lettre c en minuscule, si possible.
+La valeur renvoyée est celle de la lettre convertie, ou c si la conversion n'a pas été possible.
+*/
 
 void	t_tolower()
 {
@@ -297,6 +388,11 @@ void	t_tolower()
 		printf("KO -> ft_tolower\n");
 }
 
+/*
+- strrchr() -
+Elle renvoie un pointeur sur la première occurrence du caractère c dans la chaîne s.
+*/
+
 void	t_strchr()
 {
 	char ft_test[] = "La libft c'est un vrai p'tit plaisir.word\0";
@@ -312,6 +408,11 @@ void	t_strchr()
 		printf("KO -> ft_strchr\n");
 }
 
+/*
+- strrchr() -
+Elle renvoie un pointeur sur la dernière occurrence du caractère c dans la chaîne s.
+*/
+
 void	t_strrchr()
 {
 	char ft_test[] = "La libft c'est un vrai p'tit plaisir.word\0";
@@ -325,6 +426,191 @@ void	t_strrchr()
 		printf("OK\n");
 	else
 		printf("KO -> ft_strrchr\n");
+}
+
+/*
+- strncmp() -
+Compare que les n (au plus) premiers caractères de s1 et s2.
+Elle renvoie un entier négatif, nul, ou positif, si s1 est respectivement inférieure, égale ou supérieure à s2.
+*/
+
+void	t_strncmp()
+{
+	char ft_str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char ft_cmp[] = "La libft c'est un vrai p'tit plaisir\0";
+
+	if (ft_strncmp(ft_str, ft_cmp, 22) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strncmp\n");
+
+	if (ft_strncmp(ft_str, ft_cmp, 41) == 46)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strncmp\n");
+
+	if (ft_strncmp(ft_str, ft_cmp, 0) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strncmp\n");
+
+	if (ft_strncmp(ft_cmp, ft_str, 41) == -46)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strncmp\n");
+}
+
+/*
+- strlcpy() -
+Copie une chaînes de caractères.
+Elle renvoie la longueur totale de la chaîne qu'elles a essayé de créer cela signifie la longueur de src.
+*/
+
+void	t_strlcpy()
+{
+	char ft_dest[42];
+	char ft_src[] = "La libft c'est un vrai p'tit plaisir.word\0";
+
+	if (ft_strlcpy(ft_dest, ft_src, 41) == 41)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strlcpy\n");
+
+	if (ft_strlcpy(ft_dest, ft_src, 0) == 41)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strlcpy\n");
+
+	if (ft_strlcpy(ft_dest, ft_src, 50) == 41)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strlcpy\n");
+}
+
+/*
+- strlcpy() -
+Concaténent une chaînes de caractères.
+Elle renvoie la longueur initiale de dst plus la longueur de src.
+*/
+
+void	t_strlcat()
+{
+	char ft_dest[83] = "La libft c'est un vrai p'tit plaisir.word\0";;
+	char ft_src[42] = "La libft c'est un vrai p'tit plaisir.word\0";
+
+	if (ft_strlcat(ft_dest, ft_src, 41) == 82)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strlcpy\n");
+
+	if (ft_strlcat(ft_dest, ft_src, 20) == 61)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strlcpy\n");
+
+	if (ft_strlcpy(ft_dest, ft_src, 0) == 41)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strlcpy\n");
+}
+
+/*
+- strnstr() -
+Rechercher la première sous-chaîne dans une chaîne de longueur limitée.
+Si little est une chaîne vide, big est renvoyé, si little n'apparaît nulle part dans big, NULL est renvoyé,
+sinon un pointeur vers le premier caractère de la première occurrence de little est renvoyé.
+*/
+
+void	t_strnstr()
+{
+	char ft_big[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char ft_little[] = "un vrai p'tit plaisir\0";
+	char diff[] = "un vrai p'tit plaisir.word\0";
+
+	if (ft_strnstr(ft_big, ft_little, 10) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strnstr\n");
+
+	if (ft_strnstr(ft_big, ft_little, 0) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strnstr\n");
+
+	if (strcmp(ft_strnstr(ft_big, ft_little, 42), ft_big) == 1)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strnstr\n");
+
+	if (strcmp(ft_strnstr(ft_big, ft_little, 42), diff) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strnstr\n");
+}
+
+/*
+- atoi() -
+Elle convertie le début d'une chaîne pointée par nptr en entier de type int.
+Le résultat de la conversion.
+*/
+
+void	t_atoi()
+{
+	if (ft_atoi("42") == 42)
+		printf("OK\n");
+	else
+		printf("KO -> ft_atoi\n");
+
+	if (ft_atoi("42t 	fg \t\v\f\n\r fg ") == 42)
+		printf("OK\n");
+	else
+		printf("KO -> ft_atoi\n");
+
+	if (ft_atoi("test42t 	fg \t\v\f\n\r fg ") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_atoi\n");
+}
+
+/*
+- calloc() -
+Elle alloue la mémoire nécessaire pour un tableau de nmemb éléments de size octets, et renvoie un pointeur vers la mémoire allouée.
+Cette zone est remplie avec des zéros. Si nmemb ou si size est nulle, calloc renvoie soit NULL ou un unique pointeur qui pourra être passé ultérieurement à free() avec succès.
+*/
+
+void	t_calloc()
+{
+	char *dest;
+
+	dest = ft_calloc(10, 2);
+	dest[9] = 42;
+	if (dest[9] == 42)
+		printf("OK\n");
+	else
+		printf("KO -> ft_calloc\n");
+
+	free(dest);
+}
+
+/*
+- strdup() -
+elle renvoie un pointeur sur une nouvelle chaîne de caractères qui est dupliquée depuis s.
+La mémoire occupée par cette nouvelle chaîne est obtenue en appelant malloc(3), et peut (doit) donc être libérée avec free(3). 
+*/
+
+void	t_strdup()
+{
+	char str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char diff[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char *dest;
+
+	dest = ft_strdup(str);
+	if (strcmp(dest, diff) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_calloc\n");
+
+	free(dest);
 }
 
 int main()
@@ -363,5 +649,19 @@ int main()
 	t_strchr();
 	printf("------------------------------\n");
 	t_strrchr();
+	printf("------------------------------\n");
+	t_strncmp();
+	printf("------------------------------\n");
+	t_strlcpy();
+	printf("------------------------------\n");
+	t_strlcat();
+	printf("------------------------------\n");
+	t_strnstr();
+	printf("------------------------------\n");
+	t_atoi();
+	printf("------------------------------\n");
+	t_calloc();
+	printf("------------------------------\n");
+	t_strdup();
 	printf("========== finished ==========\n");
 }
