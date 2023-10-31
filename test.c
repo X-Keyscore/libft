@@ -588,7 +588,6 @@ void	t_calloc()
 		printf("OK\n");
 	else
 		printf("KO -> ft_calloc\n");
-
 	free(dest);
 }
 
@@ -608,9 +607,90 @@ void	t_strdup()
 	if (strcmp(dest, diff) == 0)
 		printf("OK\n");
 	else
-		printf("KO -> ft_calloc\n");
-
+		printf("KO -> ft_strdup\n");
 	free(dest);
+}
+
+/*
+- substr() -
+Alloue (avec malloc(3)) et retourne une chaine de caractères issue de la chaine donnée en argument.
+Cette nouvelle chaine commence à l’index ’start’ et a pour taille maximale ’len’.
+Elle renvoie un pointeur sur une nouvelle chaîne de caractères qui est dupliquée depuis s. NULL si l’allocation échoue.
+*/
+
+void	t_substr()
+{
+	char str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char diff[] = "un vrai p'tit plaisir\0";
+	char *dest;
+
+	dest = ft_substr(str, 15, 21);
+	if (strcmp(dest, diff) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_substr\n");
+	dest = ft_substr(str, 0, 0);
+	if (strcmp(dest, "") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_substr\n");
+	free(dest);
+}
+
+/*
+- strjoin() -
+Alloue (avec malloc(3)) et retourne une chaine de caractères issue de la chaine donnée en argument.
+Cette nouvelle chaine commence à l’index ’start’ et a pour taille maximale ’len’.
+Elle renvoie un pointeur sur une nouvelle chaîne de caractères qui est dupliquée depuis s. NULL si l’allocation échoue.
+*/
+
+void	t_strjoin()
+{
+	char str1[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char str2[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char diff[] = "La libft c'est un vrai p'tit plaisir.wordLa libft c'est un vrai p'tit plaisir.word\0";
+	char *dest;
+
+	dest = ft_strjoin(str1, str2);
+	if (strcmp(dest, diff) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_substr\n");
+	dest = ft_strjoin("", "");
+	if (strcmp(ft_substr(dest, 0, 0), "") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_substr\n");
+	free(dest);
+}
+
+/*
+- strtrim() -
+Alloue (avec malloc(3)) et retourne une copie de la chaine de caractères donnée en argument, sans les
+caractères spécifiés dans le set donné en argument au début et à la fin de la chaine de caractères.
+Elle renvoie une chaine de caractères trimmée. NULL si l’allocation échoue.
+*/
+
+void	t_strtrim()
+{
+	/*
+	char str1[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char str2[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char diff[] = "La libft c'est un vrai p'tit plaisir.wordLa libft c'est un vrai p'tit plaisir.word\0";
+	char *dest;
+
+
+	dest = ft_strjoin(str1, str2);
+	if (strcmp(dest, diff) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_substr\n");
+	dest = ft_strjoin("", "");
+	if (strcmp(ft_substr(dest, 0, 0), "") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_substr\n");
+	free(dest);*/
 }
 
 int main()
@@ -663,5 +743,11 @@ int main()
 	t_calloc();
 	printf("------------------------------\n");
 	t_strdup();
+	printf("------------------------------\n");
+	t_substr();
+	printf("------------------------------\n");
+	t_strjoin();
+	printf("------------------------------\n");
+	t_strtrim();
 	printf("========== finished ==========\n");
 }
