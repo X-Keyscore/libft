@@ -647,20 +647,20 @@ Elle renvoie un pointeur sur une nouvelle chaîne de caractères qui est dupliqu
 void	t_strjoin()
 {
 	char str1[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char diff1[] = "La libft c'est un vrai p'tit plaisir.wordLa libft c'est un vrai p'tit plaisir.word\0";
 	char str2[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char diff[] = "La libft c'est un vrai p'tit plaisir.wordLa libft c'est un vrai p'tit plaisir.word\0";
 	char *dest;
 
 	dest = ft_strjoin(str1, str2);
-	if (strcmp(dest, diff) == 0)
+	if (strcmp(dest, diff1) == 0)
 		printf("OK\n");
 	else
-		printf("KO -> ft_substr\n");
+		printf("KO -> ft_strjoin\n");
 	dest = ft_strjoin("", "");
-	if (strcmp(ft_substr(dest, 0, 0), "") == 0)
+	if (strcmp(dest, "") == 0)
 		printf("OK\n");
 	else
-		printf("KO -> ft_substr\n");
+		printf("KO -> ft_strjoin\n");
 	free(dest);
 }
 
@@ -673,24 +673,84 @@ Elle renvoie une chaine de caractères trimmée. NULL si l’allocation échoue.
 
 void	t_strtrim()
 {
-	/*
-	char str1[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char str2[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char diff[] = "La libft c'est un vrai p'tit plaisir.wordLa libft c'est un vrai p'tit plaisir.word\0";
+
+	char str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char diff[] = "a libft c'est un vrai p'tit plaisi\0";
 	char *dest;
 
-
-	dest = ft_strjoin(str1, str2);
+	dest = ft_strtrim(str, "L.word");
 	if (strcmp(dest, diff) == 0)
 		printf("OK\n");
 	else
-		printf("KO -> ft_substr\n");
+		printf("KO -> ft_strtrim\n");
 	dest = ft_strjoin("", "");
 	if (strcmp(ft_substr(dest, 0, 0), "") == 0)
 		printf("OK\n");
 	else
-		printf("KO -> ft_substr\n");
-	free(dest);*/
+		printf("KO -> ft_strtrim\n");
+	free(dest);
+}
+
+/*
+- split() -
+Alloue (avec malloc(3)) et retourne un tableau de chaines de caracteres obtenu en séparant s à
+l’aide du caractère c, utilisé comme délimiteur. Le tableau doit être terminé par NULL.
+Elle renvoie le tableau de nouvelles chaines de caractères, résultant du découpage. NULL si l’allocation échoue.
+*/
+
+void t_split()
+{
+	char str[] = "  lfi  lr rn \0";
+	char diff1_0[] = "lfi\0";
+	char diff1_1[] = "lr\0";
+	char diff1_2[] = "rn\0";
+	char **dest;
+
+	dest = ft_split(str, ' ');
+	if (strcmp(dest[0], diff1_0) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_split\n");
+	if (strcmp(dest[1], diff1_1) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_split\n");
+	if (strcmp(dest[2], diff1_2) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_split\n");
+	free(dest);
+}
+
+/*
+- itoa() -
+Alloue (avec malloc(3)) et retourne une chaîne de caractères représentant l’entier ’n’ reçu en argument.
+Les nombres négatifs doivent être gérés.
+Elle renvoie une chaîne de caractères représentant l’entier. NULL si l’allocation échoue.
+*/
+
+void t_itoa()
+{
+	char *dest;
+
+	dest = ft_itoa(10);
+	if (strcmp(dest, "10") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_itoa\n");
+	free(dest);
+	dest = ft_itoa(-10);
+	if (strcmp(dest, "-10") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_itoa\n");
+	free(dest);
+	dest = ft_itoa(0);
+	if (strcmp(dest, "0") == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_itoa\n");
+	free(dest);
 }
 
 int main()
@@ -749,5 +809,9 @@ int main()
 	t_strjoin();
 	printf("------------------------------\n");
 	t_strtrim();
+	printf("------------------------------\n");
+	t_split();
+		printf("------------------------------\n");
+	t_itoa();
 	printf("========== finished ==========\n");
 }

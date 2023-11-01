@@ -14,25 +14,27 @@ NAME		=	libft.a
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS	=	-Wall -Wextra -Werror -g
 
-SRCS		=	${wildcard *.c}
+SRCS		=	${shell find * -name '*.c'}
 
-SRCS_BONUS	=	
+SRCS_BONUS	=
 
-OBJS		= 	${SRCS:.c=.o}
+OBJS		= ${SRCS:.c=.o}
 
-all:			${NAME}
+${NAME}:	${OBJS} ${CC} ${CFLAGS} $^ -o $@
 
-${NAME}:		${OBJS}
-			${CC} ${CFLAGS} $^ -o $@
+all:
+	${NAME}
 
-clean:
-			rm -f ${OBJS}
+clean:	
+	rm -f ${OBJS}
 
-fclean:			clean
-			rm -f ${NAME}
+fclean:
+	clean rm -f ${NAME}
 
-re:				fclean all
+re:
+	fclean all
 
-.PHONY:			all clean fclean re
+.PHONY:
+	all clean fclean re
