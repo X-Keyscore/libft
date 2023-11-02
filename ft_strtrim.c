@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static char ft_char_in_set(char c,  char const *set)
+static char	ft_char_in_set(char c, char const *set)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (set[i])
@@ -28,10 +28,10 @@ static char ft_char_in_set(char c,  char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t i;
-	size_t j;
-	size_t start;
-	size_t end;
+	size_t	i;
+	size_t	j;
+	size_t	start;
+	size_t	end;
 	char	*str;
 
 	start = 0;
@@ -40,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1) - 1;
 	while (start < end && ft_char_in_set(s1[end - 1], set))
 		end--;
-	str = (char*)malloc(sizeof(*s1) * (end - start + 1));
+	str = (char *)malloc(sizeof(*s1) * (end - start + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

@@ -23,8 +23,8 @@ Elle renvoie un pointeur sur la zone mémoire s.
 
 void	t_memset()
 {
-	char ft_s[50] = "";
-	char s[50] = "";
+	char	ft_s[50] = "";
+	char	s[50] = "";
 
 	ft_memset(ft_s, '4', 50);
 	memset(s, '4', 50);
@@ -46,8 +46,8 @@ Elle met à 0 (octets contenant « \0 ») les n premiers octets du bloc pointé 
 
 void	t_bzero()
 {
-	char ft_s[50] = "";
-	int i;
+	char	ft_s[50] = "";
+	int	i;
 
 	memset( ft_s, '4', 50);
 	ft_bzero(ft_s, 50);
@@ -90,9 +90,9 @@ Elle renvoie un pointeur sur dest.
 
 void	t_memcpy()
 {
-	char ft_dest[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char ft_src[] = "drow.risialp tit'p iarv nu tse'c tfbil aL\0";
-	char diff[] = "drow.risialp tit'p iarv nu tse'c tfbil aL\0";
+	char	ft_dest[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	ft_src[] = "drow.risialp tit'p iarv nu tse'c tfbil aL\0";
+	char	diff[] = "drow.risialp tit'p iarv nu tse'c tfbil aL\0";
 
 	ft_memcpy(ft_dest, ft_src, 42);
 	if (strncmp(ft_dest, diff, 42) == 0)
@@ -114,21 +114,19 @@ Elle renvoie un pointeur sur le caractère immédiatement après c dans la zone 
 
 void	t_memccpy()
 {
-	char ft_dest[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char ft_src[] = "drow.risialp tit'p iarv nu tse'c tfbil aL\0";
-	char diff[] = "drow.risialp tit'p iarvp'tit plaisir.word\0";
+	char	ft_dest[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	ft_src[] = "drow.risialp tit'p iarv nu tse'c tfbil aL\0";
+	char	diff[] = "drow.risialp tit'p iarvp'tit plaisir.word\0";
 
 	ft_memccpy(ft_dest, ft_src, 'v', 42);
 	if (strncmp(ft_dest, diff, 42) == 0)
 		printf("OK\n");
 	else
 		printf("KO -> ft_memccpy\n");
-
 	if (ft_memccpy(NULL, ft_src, 'p', 42) == NULL)// Function de base segfault
 		printf("OK\n");
 	else
 		printf("KO -> ft_memccpy\n");
-
 	if (ft_memccpy(ft_dest, ft_src, 'z', 42) == NULL)// Function de base segfault
 		printf("OK\n");
 	else
@@ -145,16 +143,14 @@ Elle renvoie un pointeur sur dest.
 
 void	t_memmove()
 {
-	//char ft_dest[90] = "La libft c'est un vrai p'tit plaisir, comme un bon gateau.";
-	char ft_dest[] = "Start stop\0";
-	char diff[] = "artrt stop\0";
+	char	ft_dest[] = "Start stop\0";
+	char	diff[] = "artrt stop\0";
 
 	ft_memmove(ft_dest, ft_dest + 2, 3);
 	if (strncmp(ft_dest, diff, 10) == 0)
 		printf("OK\n");
 	else
 		printf("KO -> ft_memmove\n");
-
 	if (ft_memmove(NULL, ft_dest + 2, 3) == NULL)// Function de base segfault
 		printf("OK\n");
 	else
@@ -170,13 +166,12 @@ Elle renvoie un pointeur sur l'octet correspondant, ou NULL si le caractère n'e
 
 void	t_memchr()
 {
-	char ft_dest[] = "Start stop\0";
+	char	ft_dest[] = "Start stop\0";
 
 	if (ft_memchr(ft_dest, 'o', 10) == ft_dest + 8)
 		printf("OK\n");
 	else
 		printf("KO -> ft_memchr\n");
-
 	if (ft_memchr("", 'o', 10) == NULL)
 		printf("OK\n");
 	else
@@ -191,19 +186,17 @@ Elle renvoie un entier inférieur, égal, ou supérieur à zéro, si s1 est resp
 
 void	t_memcmp()
 {
-	char s1[] = "Start stop\0";
-	char s2[] = "Stop start\0";
+	char	s1[] = "Start stop\0";
+	char	s2[] = "Stop start\0";
 
 	if (ft_memcmp(s1, s1, 10) == 0)
 		printf("OK\n");
 	else
 		printf("KO -> ft_memcmp\n");
-
 	if (ft_memcmp(s1, s2, 10) < 0)
 		printf("OK\n");
 	else
 		printf("KO -> ft_memcmp\n");
-
 	if (ft_memcmp(s1, s2, 0) == 0)
 		printf("OK\n");
 	else
@@ -217,13 +210,12 @@ La len du mouton.
 
 void	t_strlen()
 {
-	char s[] = "Start stop\0";
+	char	s[] = "Start stop\0";
 
 	if (ft_strlen("") == 0)
 		printf("OK\n");
 	else
 		printf("KO -> ft_strlen\n");
-
 	if (ft_strlen(s) == 10)
 		printf("OK\n");
 	else
@@ -242,7 +234,6 @@ void	t_isalpha()
 		printf("OK\n");
 	else
 		printf("KO -> ft_isalpha\n");
-
 	if (ft_isalpha('4') == 0)
 		printf("OK\n");
 	else
@@ -261,7 +252,6 @@ void	t_isdigit()
 		printf("OK\n");
 	else
 		printf("KO -> ft_isdigit\n");
-
 	if (ft_isdigit('z') == 0)
 		printf("OK\n");
 	else
@@ -280,12 +270,10 @@ void	t_isalnum()
 		printf("OK\n");
 	else
 		printf("KO -> ft_isalnum\n");
-
 	if (ft_isalnum('z') == 1)
 		printf("OK\n");
 	else
 		printf("KO -> ft_isalnum\n");
-
 	if (ft_isalnum('.') == 0)
 		printf("OK\n");
 	else
@@ -304,12 +292,10 @@ void	t_isascii()
 		printf("OK\n");
 	else
 		printf("KO -> ft_isascii\n");
-
 	if (ft_isascii(0) == 1)
 		printf("OK\n");
 	else
 		printf("KO -> ft_isascii\n");
-
 	if (ft_isascii(129) == 0)
 		printf("OK\n");
 	else
@@ -328,12 +314,10 @@ void	t_isprint()
 		printf("OK\n");
 	else
 		printf("KO -> ft_isprint\n");
-
 	if (ft_isprint(32) == 1)
 		printf("OK\n");
 	else
 		printf("KO -> ft_isprint\n");
-
 	if (ft_isprint(129) == 0)
 		printf("OK\n");
 	else
@@ -352,12 +336,10 @@ void	t_toupper()
 		printf("OK\n");
 	else
 		printf("KO -> ft_toupper\n");
-
 	if (ft_toupper('z') == 'Z')
 		printf("OK\n");
 	else
 		printf("KO -> ft_toupper\n");
-
 	if (ft_toupper(126) == 126)
 		printf("OK\n");
 	else
@@ -376,12 +358,10 @@ void	t_tolower()
 		printf("OK\n");
 	else
 		printf("KO -> ft_tolower\n");
-
 	if (ft_tolower('Z') == 'z')
 		printf("OK\n");
 	else
 		printf("KO -> ft_tolower\n");
-
 	if (ft_tolower(126) == 126)
 		printf("OK\n");
 	else
@@ -395,13 +375,12 @@ Elle renvoie un pointeur sur la première occurrence du caractère c dans la cha
 
 void	t_strchr()
 {
-	char ft_test[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	ft_test[] = "La libft c'est un vrai p'tit plaisir.word\0";
 
 	if (strcmp(ft_strchr(ft_test, '.'), ".word") == 0)
 		printf("OK\n");
 	else
 		printf("KO -> ft_strchr\n");
-
 	if (strcmp(ft_strchr(ft_test, '.'), ".wor") == 1)
 		printf("OK\n");
 	else
@@ -415,13 +394,12 @@ Elle renvoie un pointeur sur la dernière occurrence du caractère c dans la cha
 
 void	t_strrchr()
 {
-	char ft_test[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	ft_test[] = "La libft c'est un vrai p'tit plaisir.word\0";
 
 	if (strcmp(ft_strrchr(ft_test, 'i'), "ir.word") == 0)
 		printf("OK\n");
 	else
 		printf("KO -> ft_strrchr\n");
-
 	if (strcmp(ft_strrchr(ft_test, 'i'), "ir.wor") == 1)
 		printf("OK\n");
 	else
@@ -436,19 +414,17 @@ Elle renvoie un entier négatif, nul, ou positif, si s1 est respectivement infé
 
 void	t_strncmp()
 {
-	char ft_str[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char ft_cmp[] = "La libft c'est un vrai p'tit plaisir\0";
+	char	ft_str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	ft_cmp[] = "La libft c'est un vrai p'tit plaisir\0";
 
 	if (ft_strncmp(ft_str, ft_cmp, 22) == 0)
 		printf("OK\n");
 	else
 		printf("KO -> ft_strncmp\n");
-
 	if (ft_strncmp(ft_str, ft_cmp, 41) == 46)
 		printf("OK\n");
 	else
 		printf("KO -> ft_strncmp\n");
-
 	if (ft_strncmp(ft_str, ft_cmp, 0) == 0)
 		printf("OK\n");
 	else
@@ -468,19 +444,17 @@ Elle renvoie la longueur totale de la chaîne qu'elles a essayé de créer cela 
 
 void	t_strlcpy()
 {
-	char ft_dest[42];
-	char ft_src[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	ft_dest[42];
+	char	ft_src[] = "La libft c'est un vrai p'tit plaisir.word\0";
 
 	if (ft_strlcpy(ft_dest, ft_src, 41) == 41)
 		printf("OK\n");
 	else
 		printf("KO -> ft_strlcpy\n");
-
 	if (ft_strlcpy(ft_dest, ft_src, 0) == 41)
 		printf("OK\n");
 	else
 		printf("KO -> ft_strlcpy\n");
-
 	if (ft_strlcpy(ft_dest, ft_src, 50) == 41)
 		printf("OK\n");
 	else
@@ -495,8 +469,8 @@ Elle renvoie la longueur initiale de dst plus la longueur de src.
 
 void	t_strlcat()
 {
-	char ft_dest[83] = "La libft c'est un vrai p'tit plaisir.word\0";;
-	char ft_src[42] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	ft_dest[83] = "La libft c'est un vrai p'tit plaisir.word\0";;
+	char	ft_src[42] = "La libft c'est un vrai p'tit plaisir.word\0";
 
 	if (ft_strlcat(ft_dest, ft_src, 41) == 82)
 		printf("OK\n");
@@ -523,9 +497,9 @@ sinon un pointeur vers le premier caractère de la première occurrence de littl
 
 void	t_strnstr()
 {
-	char ft_big[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char ft_little[] = "un vrai p'tit plaisir\0";
-	char diff[] = "un vrai p'tit plaisir.word\0";
+	char	ft_big[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	ft_little[] = "un vrai p'tit plaisir\0";
+	char	diff[] = "un vrai p'tit plaisir.word\0";
 
 	if (ft_strnstr(ft_big, ft_little, 10) == 0)
 		printf("OK\n");
@@ -580,7 +554,7 @@ Cette zone est remplie avec des zéros. Si nmemb ou si size est nulle, calloc re
 
 void	t_calloc()
 {
-	char *dest;
+	char	*dest;
 
 	dest = ft_calloc(10, 2);
 	dest[9] = 42;
@@ -599,9 +573,9 @@ La mémoire occupée par cette nouvelle chaîne est obtenue en appelant malloc(3
 
 void	t_strdup()
 {
-	char str[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char diff[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char *dest;
+	char	str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	diff[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	*dest;
 
 	dest = ft_strdup(str);
 	if (strcmp(dest, diff) == 0)
@@ -620,9 +594,9 @@ Elle renvoie un pointeur sur une nouvelle chaîne de caractères qui est dupliqu
 
 void	t_substr()
 {
-	char str[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char diff[] = "un vrai p'tit plaisir\0";
-	char *dest;
+	char	str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	diff[] = "un vrai p'tit plaisir\0";
+	char	*dest;
 
 	dest = ft_substr(str, 15, 21);
 	if (strcmp(dest, diff) == 0)
@@ -646,10 +620,10 @@ Elle renvoie un pointeur sur une nouvelle chaîne de caractères qui est dupliqu
 
 void	t_strjoin()
 {
-	char str1[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char diff1[] = "La libft c'est un vrai p'tit plaisir.wordLa libft c'est un vrai p'tit plaisir.word\0";
-	char str2[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char *dest;
+	char	str1[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	diff1[] = "La libft c'est un vrai p'tit plaisir.wordLa libft c'est un vrai p'tit plaisir.word\0";
+	char	str2[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	*dest;
 
 	dest = ft_strjoin(str1, str2);
 	if (strcmp(dest, diff1) == 0)
@@ -674,9 +648,9 @@ Elle renvoie une chaine de caractères trimmée. NULL si l’allocation échoue.
 void	t_strtrim()
 {
 
-	char str[] = "La libft c'est un vrai p'tit plaisir.word\0";
-	char diff[] = "a libft c'est un vrai p'tit plaisi\0";
-	char *dest;
+	char	str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	diff[] = "a libft c'est un vrai p'tit plaisi\0";
+	char	*dest;
 
 	dest = ft_strtrim(str, "L.word");
 	if (strcmp(dest, diff) == 0)
@@ -698,13 +672,13 @@ l’aide du caractère c, utilisé comme délimiteur. Le tableau doit être term
 Elle renvoie le tableau de nouvelles chaines de caractères, résultant du découpage. NULL si l’allocation échoue.
 */
 
-void t_split()
+void	t_split()
 {
-	char str[] = "  lfi  lr rn \0";
-	char diff1_0[] = "lfi\0";
-	char diff1_1[] = "lr\0";
-	char diff1_2[] = "rn\0";
-	char **dest;
+	char	str[] = "  lfi  lr rn \0";
+	char	diff1_0[] = "lfi\0";
+	char	diff1_1[] = "lr\0";
+	char	diff1_2[] = "rn\0";
+	char	**dest;
 
 	dest = ft_split(str, ' ');
 	if (strcmp(dest[0], diff1_0) == 0)
@@ -725,13 +699,13 @@ void t_split()
 /*
 - itoa() -
 Alloue (avec malloc(3)) et retourne une chaîne de caractères représentant l’entier ’n’ reçu en argument.
-Les nombres négatifs doivent être gérés.
+Les nombres négatifs sont gérés.
 Elle renvoie une chaîne de caractères représentant l’entier. NULL si l’allocation échoue.
 */
 
-void t_itoa()
+void	t_itoa()
 {
-	char *dest;
+	char	*dest;
 
 	dest = ft_itoa(10);
 	if (strcmp(dest, "10") == 0)
@@ -753,7 +727,75 @@ void t_itoa()
 	free(dest);
 }
 
-int main()
+/*
+- strmapi() -
+Applique la fonction ’f’ à chaque caractère de la chaîne de caractères passée en argument pour créer
+une nouvelle chaîne de caractères (avec malloc(3)) résultant des applications successives de ’f’.
+La chaîne de caractères résultant des applications successives de ’f’. Retourne NULL si l’allocation échoue.
+*/
+
+char test_f_strmapi(unsigned int i, char c)
+{
+	if (c >= 'a' && 'z' >= c && i < 4)
+		c -= 32;
+	return (c);
+}
+void	t_strmapi()
+{
+	char	str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	diff[] = "LA Libft c'est un vrai p'tit plaisir.word\0";
+
+	if (strcmp(ft_strmapi(str, test_f_strmapi), diff) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_strmapi\n");
+}
+
+/*
+- striteri() -
+Applique la fonction ’f’ à chaque caractère de la chaîne de caractères transmise comme argument,
+et en passant son index comme premier argument. Chaque caractère est transmis par adresse à ’f’
+afin d’être modifié si nécessaire.
+*/
+
+void	test_f_striteri(unsigned int i, char *c)
+{
+	if (*c >= 'a' && 'z' >= *c && i < 4)
+		*c -= 32;
+}
+void	t_striteri()
+{
+	char	str[] = "La libft c'est un vrai p'tit plaisir.word\0";
+	char	diff[] = "LA Libft c'est un vrai p'tit plaisir.word\0";
+
+	ft_striteri(str, test_f_striteri);
+	if (strcmp(str, diff) == 0)
+		printf("OK\n");
+	else
+		printf("KO -> ft_striteri\n");
+}
+
+/*
+- ft_putchar_fd() -
+Écrit le caractère ’c’ sur le descripteur de fichier donné.
+*/
+
+/*
+- ft_putstr_fd() -
+Écrit la chaîne de caractères ’s’ sur le descripteur de fichier donné.
+*/
+
+/*
+- ft_putendl_fd() -
+Écrit La chaîne de caractères ’s’ sur le descripteur de fichier donné suivie d’un retour à la ligne.
+*/
+
+/*
+- ft_putnbr_fd() -
+Écrit l’entier ’n’ sur le descripteur de fichier donné.
+*/
+
+int	main()
 {
 	printf("\n====== Start test Libft ======\n");
 	t_memset();
@@ -811,7 +853,13 @@ int main()
 	t_strtrim();
 	printf("------------------------------\n");
 	t_split();
-		printf("------------------------------\n");
+	printf("------------------------------\n");
 	t_itoa();
+	printf("------------------------------\n");
+	t_strmapi();
+	printf("------------------------------\n");
+	t_striteri();
+	printf("------------------------------\n");
+	printf("Verif manuelle à faire pour ft_put.\n");
 	printf("========== finished ==========\n");
 }

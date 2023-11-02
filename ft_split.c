@@ -14,9 +14,9 @@
 
 static size_t	ft_count_alloc(char const *s, char c)
 {
-	size_t i;
-	size_t len;
-	int boolean;
+	size_t	i;
+	size_t	len;
+	int		boolean;
 
 	i = 0;
 	len = 0;
@@ -45,7 +45,7 @@ static char	*ft_strdup_p2p(char const *s, size_t start_index, size_t end_index)
 
 	if (!s)
 		return (NULL);
-	str = (char*)malloc(sizeof(*s) * (end_index - start_index) + 1);
+	str = (char *)malloc(sizeof(*s) * (end_index - start_index) + 1);
 	if (!str)
 		return (NULL);
 	i = start_index;
@@ -60,11 +60,11 @@ static char	*ft_strdup_p2p(char const *s, size_t start_index, size_t end_index)
 
 static void	ft_spliter(char	**array, char const *s, char c)
 {
-	int boolean;
-	size_t i;
-	size_t arr_i;
-	size_t start_s;
-	
+	int		boolean;
+	size_t	i;
+	size_t	arr_i;
+	size_t	start_s;
+
 	boolean = 0;
 	i = 0;
 	while (s[i])
