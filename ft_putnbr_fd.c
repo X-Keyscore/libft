@@ -22,14 +22,14 @@ void	ft_putnbr_fd(int n, int fd)
 	if (n >= len_base)
 	{
 		ft_putnbr_fd(n / len_base, fd);
-		write(1, &base[n % len_base], fd);
+		write(fd, &base[n % len_base], 1);
 	}
 	else if (n < 0)
 	{
 		n = n * -1;
-		write(1, "-", fd);
+		write(fd, "-", 1);
 		ft_putnbr_fd(n, fd);
 	}
 	else
-		write(1, &base[n % len_base], fd);
+		write(fd, &base[n % len_base], 1);
 }
