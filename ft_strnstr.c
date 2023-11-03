@@ -6,31 +6,32 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:45:06 by anraymon          #+#    #+#             */
-/*   Updated: 2023/10/30 21:45:06 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/11/03 04:26:48 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char *ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	j;
-	size_t	i;
+	size_t	h;
+	size_t	n;
 
-	if (!big || !little)
-		return (NULL);
-	if (!little || !little[0])
+	h = 0;
+	if (little[0] == '\0' || !len)
 		return ((char *)big);
-	i = 0;
-	while (big[i] && i < len)
+	while (big[h] != '\0')
 	{
-		j = 0;
-		while (big[i + j] && little[j]
-			&& i + j < len && big[i + j] == little[j])
-			j++;
-		if (!little[j])
-			return ((char *)(big + i));
-		i++;
+		n = 0;
+		while (big[h + n] == little[n] && (h + n) < len)
+		{
+			if (little[n] == '\0' && big[h + n] == '\0')
+				return ((char *)&big[h]);
+			n++;
+		}
+		if (little[n] == '\0')
+			return ((char *)big + h);
+		h++;
 	}
-	return (NULL);
+	return (0);
 }

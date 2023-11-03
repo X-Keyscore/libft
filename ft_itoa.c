@@ -6,31 +6,26 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:22:15 by anraymon          #+#    #+#             */
-/*   Updated: 2023/10/31 22:22:15 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/11/03 05:08:20 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "stdio.h"
-
 static size_t	ft_count_alloc(long long n)
 {
 	size_t	count;
 
-	count = 1;
+	count = 0;
 	if (n < 0)
 	{
 		count++;
-		n = n * -1;
+		n *= -1;
 	}
 	while (n >= 10)
 	{
-		if (n >= 10)
-		{
-			count++;
-			n = n / 10;
-		}
+		count++;
+		n /= 10;
 	}
 	count++;
 	return (count);
@@ -38,20 +33,16 @@ static size_t	ft_count_alloc(long long n)
 
 static void	ft_convert_n(long long n, char *str, size_t alloc)
 {
-	alloc--;
 	str[alloc--] = '\0';
 	if (n < 0)
 	{
 		str[0] = '-';
-		n = n * -1;
+		n *= -1;
 	}
 	while (n >= 10)
 	{
-		if (n >= 10)
-		{
-			str[alloc--] = "0123456789"[n % 10];
-			n = n / 10;
-		}
+		str[alloc--] = "0123456789"[n % 10];
+		n /= 10;
 	}
 	str[alloc] = "0123456789"[n % 10];
 }

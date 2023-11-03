@@ -6,7 +6,7 @@
 #    By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/01 06:11:05 by anraymon          #+#    #+#              #
-#    Updated: 2023/08/02 13:08:19 by tomoron          ###   ########.fr        #
+#    Updated: 2023/11/03 18:56:04 by anraymon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,7 @@ NAME   = libft.a
 
 CC     = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g
-
-# {shell find * -name '*.c'}
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS   = ft_atoi.c \
 ft_bzero.c \
@@ -54,26 +52,39 @@ ft_substr.c \
 ft_tolower.c \
 ft_toupper.c \
 
-SRCS_BONUS	=
+SRCS_BONUS = ft_lstadd_back.c \
+ft_lstadd_front.c \
+ft_lstclear.c \
+ft_lstdelone.c \
+ft_lstiter.c \
+ft_lstlast.c \
+ft_lstmap.c \
+ft_lstnew.c \
+ft_lstsize.c \
 
-OBJS		= ${SRCS:.c=.o}
+OBJS = ${SRCS:.c=.o}
+
+OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
+
+all:	${NAME}
 
 ${NAME}: $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-all:	${NAME}
+bonus: $(OBJS) $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 
 clean:
 	rm -f ${OBJS}
+	rm -f $(OBJS_BONUS)
 
 fclean: clean
 	rm -f ${NAME}
 
 re: fclean all
-	
-	
+
 so:
 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
 	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

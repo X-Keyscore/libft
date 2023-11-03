@@ -6,7 +6,7 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 23:55:17 by anraymon          #+#    #+#             */
-/*   Updated: 2023/11/01 23:55:17 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/11/03 05:14:20 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*str;
 	size_t	i;
 
+	if (!s || !f)
+		return (NULL);
 	str = ft_strdup(s);
-	if (!(str))
+	if (!s || !f || !(str))
 		return (NULL);
 	i = 0;
 	while (str[i])

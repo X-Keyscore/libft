@@ -6,97 +6,78 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:09:35 by anraymon          #+#    #+#             */
-/*   Updated: 2023/10/31 18:09:35 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/11/03 05:20:56 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count_alloc(char const *s, char c)
+static int	ft_count_alloc(const char *str, char c)
 {
-	size_t	i;
-	size_t	len;
-	int		boolean;
+	int	i;
+	int	bool;
 
 	i = 0;
-	len = 0;
-	boolean = 0;
-	while (s[i])
+	bool = 0;
+	while (*str)
 	{
-		if (s[i] != c && boolean == 0)
+		if (*str != c && bool == 0)
 		{
-			len++;
-			boolean = 1;
+			bool = 1;
+			i++;
 		}
-		else if (s[i] == c && boolean)
-			boolean = 0;
-		if (boolean)
-			len++;
-		i++;
+		else if (*str == c)
+			bool = 0;
+		str++;
 	}
-	return (len);
+	return (i);
 }
 
-static char	*ft_strdup_p2p(char const *s, size_t start_index, size_t end_index)
+static char	*ft_strdup_p2p(const char *str, int start, int end)
 {
-	char	*str;
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = malloc((end - start + 1) * sizeof(char));
+	while (start < end)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+static void	ft_splitter(char **array, char const *s, char c)
+{
 	size_t	i;
 	size_t	j;
+	int		index;
 
-	if (!s)
-		return (NULL);
-	str = (char *)malloc(sizeof(*s) * (end_index - start_index) + 1);
-	if (!str)
-		return (NULL);
-	i = start_index;
-	j = 0;
-	while (s[i] && i <= end_index)
-	{
-		str[j++] = s[i++];
-	}
-	str[j] = 0;
-	return (str);
-}
-
-static void	ft_spliter(char	**array, char const *s, char c)
-{
-	int		boolean;
-	size_t	i;
-	size_t	arr_i;
-	size_t	start_s;
-
-	boolean = 0;
 	i = 0;
-	while (s[i])
+	j = 0;
+	index = -1;
+	while (i <= ft_strlen(s))
 	{
-		if (s[i] != c && boolean == 0)
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
 		{
-			boolean = 1;
-			start_s = i;
-		}
-		else if (s[i] == c && boolean)
-		{
-			array[arr_i++] = ft_strdup_p2p(s, start_s, i - 1);
-			start_s = 0;
-			boolean = 0;
+			array[j++] = ft_strdup_p2p(s, index, i);
+			index = -1;
 		}
 		i++;
 	}
-	if (boolean)
-		array[arr_i] = ft_strdup_p2p(s, start_s, i - 1);
+	array[j] = '\0';
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
-	size_t	len;
 
-	len = ft_count_alloc(s, c);
-	if (!len)
+	if (!s)
 		return (NULL);
-	array = malloc(sizeof(char *) * (len));
+	array = malloc(sizeof(char *) * ft_count_alloc(s, c) + 1);
 	if (!array)
 		return (NULL);
-	ft_spliter(array, s, c);
+	ft_splitter(array, s, c);
 	return (array);
 }
