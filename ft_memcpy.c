@@ -6,7 +6,7 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:39:27 by anraymon          #+#    #+#             */
-/*   Updated: 2023/11/03 04:16:25 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:46:43 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	if (!dest && !src)
 		return (0);

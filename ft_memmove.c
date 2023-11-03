@@ -6,7 +6,7 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 22:20:43 by anraymon          #+#    #+#             */
-/*   Updated: 2023/11/03 04:17:28 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:46:40 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	if (!dest && !src)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 22:23:45 by anraymon          #+#    #+#             */
-/*   Updated: 2023/11/03 18:15:59 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:56:40 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 typedef struct s_list
 {
-	void *content;
-	struct s_list *next;
+	void	*content;
+	struct s_list	*next;
 }	t_list;
 
 void		*ft_memset(void *s, int c, size_t n);

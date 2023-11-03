@@ -6,7 +6,7 @@
 #    By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/01 06:11:05 by anraymon          #+#    #+#              #
-#    Updated: 2023/11/03 18:56:04 by anraymon         ###   ########.fr        #
+#    Updated: 2023/11/03 22:24:17 by anraymon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,6 @@ re: fclean all
 
 so:
 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJS_BONUS)
 
 .PHONY: all clean fclean re bonus
