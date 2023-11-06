@@ -14,13 +14,13 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	g_size;
 	void	*dst;
 
-	g_size = size * nmemb;
-	dst = malloc(g_size);
+	if ((nmemb > INT_MAX && size > INT_MAX) || (size * nmemb > INT_MAX))
+		return (NULL);
+	dst = malloc(size * nmemb);
 	if (!dst)
-		return (0);
-	ft_memset(dst, 0, g_size);
+		return (NULL);
+	ft_memset(dst, 0, size * nmemb);
 	return (dst);
 }

@@ -6,78 +6,97 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:09:35 by anraymon          #+#    #+#             */
-/*   Updated: 2023/11/03 05:20:56 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:09:35 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_alloc(const char *str, char c)
-{
-	int	i;
-	int	bool;
-
-	i = 0;
-	bool = 0;
-	while (*str)
-	{
-		if (*str != c && bool == 0)
-		{
-			bool = 1;
-			i++;
-		}
-		else if (*str == c)
-			bool = 0;
-		str++;
-	}
-	return (i);
-}
-
-static char	*ft_strdup_p2p(const char *str, int start, int end)
-{
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc((end - start + 1) * sizeof(char));
-	while (start < end)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
-}
-
-static void	ft_splitter(char **array, char const *s, char c)
+static size_t	ft_count_alloc(char const *s, char c)
 {
 	size_t	i;
-	size_t	j;
-	int		index;
+	size_t	len;
+	int		boolean;
 
 	i = 0;
-	j = 0;
-	index = -1;
-	while (i <= ft_strlen(s))
+	len = 0;
+	boolean = 0;
+	while (s[i])
 	{
-		if (s[i] != c && index < 0)
-			index = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		if (s[i] != c && boolean == 0)
 		{
-			array[j++] = ft_strdup_p2p(s, index, i);
-			index = -1;
+			len++;
+			boolean = 1;
+		}
+		else if (s[i] == c && boolean)
+			boolean = 0;
+		if (boolean)
+			len++;
+		i++;
+	}
+	return (len);
+}
+
+static char	*ft_strdup_p2p(char const *s, size_t start_index, size_t end_index)
+{
+	char	*str;
+	size_t	i;
+	size_t	j;
+
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(sizeof(*s) * (end_index - start_index) + 1);
+	if (!str)
+		return (NULL);
+	i = start_index;
+	j = 0;
+	while (s[i] && i <= end_index)
+	{
+		str[j++] = s[i++];
+	}
+	str[j] = 0;
+	return (str);
+}
+
+static void	ft_spliter(char	**array, char const *s, char c)
+{
+	int		boolean;
+	size_t	i;
+	size_t	arr_i;
+	size_t	start_s;
+
+	boolean = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != c && boolean == 0)
+		{
+			boolean = 1;
+			start_s = i;
+		}
+		else if (s[i] == c && boolean)
+		{
+			array[arr_i++] = ft_strdup_p2p(s, start_s, i - 1);
+			start_s = 0;
+			boolean = 0;
 		}
 		i++;
 	}
-	array[j] = '\0';
+	if (boolean)
+		array[arr_i] = ft_strdup_p2p(s, start_s, i - 1);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
+	size_t	len;
 
-	if (!s)
+	len = ft_count_alloc(s, c);
+	if (!len)
 		return (NULL);
-	array = malloc(sizeof(char *) * ft_count_alloc(s, c) + 1);
+	array = malloc(sizeof(char *) * (len));
 	if (!array)
 		return (NULL);
-	ft_splitter(array, s, c);
+	ft_spliter(array, s, c);
 	return (array);
 }
