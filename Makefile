@@ -6,7 +6,7 @@
 #    By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/01 06:11:05 by anraymon          #+#    #+#              #
-#    Updated: 2023/11/03 22:24:17 by anraymon         ###   ########.fr        #
+#    Updated: 2023/11/06 21:49:41 by anraymon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,8 +71,8 @@ all:	${NAME}
 ${NAME}: $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-bonus: $(OBJS) $(OBJS_BONUS)
-	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+bonus: ${NAME} $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS_BONUS)
 
 clean:
 	rm -f ${OBJS}

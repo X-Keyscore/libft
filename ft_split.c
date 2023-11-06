@@ -6,103 +6,78 @@
 /*   By: anraymon <anraymon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:09:35 by anraymon          #+#    #+#             */
-/*   Updated: 2023/10/31 18:09:35 by anraymon         ###   ########.fr       */
+/*   Updated: 2023/11/06 22:31:18 by anraymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static void	ft_free_alloc(char	**array, size_t arr_i)
+static size_t	count_alloc(char const *str, char c)
 {
-	while (arr_i)
-	{
-		free(array[arr_i--]);
-	}
-}
-
-static size_t	ft_count_alloc(char const *s, char c)
-{
-	size_t	i;
 	size_t	alloc;
-	int		boolean;
+	size_t	boolean;
 
-	i = 0;
 	alloc = 0;
 	boolean = 0;
-	while (s[i])
+	while (*str)
 	{
-		if (s[i] != c && boolean == 0)
-			boolean = 1;
-		else if (s[i] == c && boolean)
+		if (*str != c && !boolean)
 		{
+			boolean = 1;
 			alloc++;
-			boolean = 0;
 		}
-		i++;
+		else if (*str == c)
+			boolean = 0;
+		str++;
 	}
-	if (boolean)
-		alloc++;
 	return (alloc);
 }
 
-static void	ft_spliter(char	**array, char const *s, char c)
+static char	**alloc_string(char const *s, char c, char **split, size_t s_len)
 {
-	int		boolean;
 	size_t	i;
-	size_t	arr_i;
-	size_t	start;
+	size_t	split_i;
 	size_t	len;
 
-	boolean = 0;
-	arr_i = 0;
 	i = 0;
+	split_i = 0;
 	len = 0;
-	while (s[i])
+	while (i < s_len + 1 && s_len > 0)
 	{
-		if (s[i] != c && boolean == 0)
+		if (s[i] == c || !s[i])
 		{
-			boolean = 1;
-			start = i;
-			len = 0;
-		}
-		else if (s[i] == c && boolean)
-		{
-			array[arr_i++] = ft_substr(s, start, len);
-			if (!array[arr_i - 1])
+			if (len > 0)
 			{
-				ft_free_alloc(array, arr_i);
-				return ;
+				split[split_i] = (char *)ft_calloc(len + 1, sizeof(char));
+				if (split[split_i])
+					ft_strlcpy(split[split_i], &s[i - len], len + 1);
+				len = 0;
+				split_i++;
 			}
-			start = 0;
-			boolean = 0;
 		}
-		if (boolean)
+		else
 			len++;
 		i++;
 	}
-	if (boolean)
-		array[arr_i++] = ft_substr(s, start, len);
-	if (!array[arr_i - 1])
-	{
-		ft_free_alloc(array, arr_i);
-		return ;
-	}
-	array[arr_i] = 0;
+	return (split);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**array;
 	size_t	alloc;
+	size_t	s_len;
+	char	**split;
 
-	alloc = ft_count_alloc(s, c);
-	printf("\nlen = %ld", alloc);
-	if (!alloc)
+	if (!s)
 		return (NULL);
-	array = malloc(sizeof(char *) * (alloc + 1));
-	if (!array)
+	s_len = ft_strlen(s);
+	if (!s)
 		return (NULL);
-	ft_spliter(array, s, c);
-	return (array);
+	alloc = count_alloc(s, c);
+	split = (char **)ft_calloc(sizeof(char *), alloc + 1);
+	if (!split)
+		return (NULL);
+	split = alloc_string(s, c, split, s_len);
+	split[alloc] = NULL;
+	return (split);
 }
